@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GBlorbExtractor": {
+      "commandName": "Project",
+      "commandLineArgs": "--extract=C:\\temp \"C:\\Users\\rober\\Documents\\Inform\\Projects\\EspressoMoka\\Espresso Moka.materials\\Release\\Espresso Moka.gblorb\""
+    }
+  }
+}
