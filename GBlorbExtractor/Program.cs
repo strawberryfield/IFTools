@@ -17,11 +17,13 @@ using Mono.Options;
 using Casasoft.IF.GBlorbLib;
 
 bool ShouldShowHelp = false;
+bool ShouldSuppressBanner = false;
 bool ShouldList = false;
 string ExtractDir = string.Empty;
 
 OptionSet p = new OptionSet()
 {
+    { "q|quiet", "Suppress banner print", v => ShouldSuppressBanner = v != null },
     { "h|?|help", "Show this help", v => ShouldShowHelp = v != null },
     { "l|list", "List the content of the archive", v => ShouldList = v != null },
     { "x|extract=", "Extract the resources in the specified dir", o => ExtractDir = o },
@@ -31,9 +33,13 @@ List<string> FilesList = p.Parse(args);
 
 if (ShouldShowHelp || FilesList.Count == 0)
 {
+    ShowBanner();
     ShowHelp();
     return;
 }
+
+if (!ShouldSuppressBanner)
+    ShowBanner();   
 
 GBlorb Blorb = new(FilesList[0]);
 
@@ -59,4 +65,6 @@ void ShowHelp()
     Console.WriteLine("Options:");
     p.WriteOptionDescriptions(Console.Out);
 }
+
+void ShowBanner() => Console.WriteLine("Casasoft GBlorbExtractor v1.0\n(c) 2025 Roberto Ceccarelli - Casasoft\n");
 #endregion
