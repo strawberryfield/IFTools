@@ -61,6 +61,29 @@ public class ResourceIndex : Chunk
             currentOffset += 12;
         }
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ResourceIndex"/> class using a list of chunks.
+    /// </summary>
+    /// <param name="chunks">The list of chunks to include in the resource index.</param>
+    public ResourceIndex(List<IChunk> chunks) : base("RIdx")
+    {
+        TotalResourcesCount = chunks.Count;
+        Length = TotalResourcesCount * 12 + 12;
+        ResourcesEntries = new();
+        int progressiveAddress = 12 + Length;
+        foreach (IChunk chunk in chunks)
+        {
+            ResourceEntry entry = new(chunk.ResourceType())
+            {
+                Number = chunk.ResourceID,
+                Start = progressiveAddress
+            };
+            ResourcesEntries.Add(entry);
+
+            progressiveAddress += chunk.Length;
+        }
+    }
     #endregion
 
     #region Methods
@@ -95,5 +118,7 @@ public class ResourceIndex : Chunk
             currentOffset += 12;
         }
     }
+
+    public Int32 GetResourceNumberByAddress(Int32 address) => ResourcesEntries.FirstOrDefault(e => e.Start == address)?.Number ?? -1;
     #endregion
 }

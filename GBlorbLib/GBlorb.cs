@@ -71,6 +71,7 @@ public class GBlorb
         for (int offset = 12 + 8 + ResourceIndex.Length; offset < Data.Length;)
         {
             IChunk chunk = ChunkFactory.CreateChunk(Data, offset);
+            chunk.ResourceID = ResourceIndex.GetResourceNumberByAddress(offset);
             Chunks.Add(chunk);
             offset += 8 + chunk.Length;
         }
@@ -120,5 +121,18 @@ public class GBlorb
             IFmd.Export(Path.Combine(path, "IFmd.xml"));
         }
     }
+
+    /// <summary>
+    /// Gets the list of resource chunks from the GBlorb file.
+    /// </summary>
+    /// <returns>A list of chunks that are identified as resources.</returns>
+    public List<IChunk> GetResourceChunks() => Chunks.Where(c => c.IsResource() == true).ToList();
+
+    /// <summary>
+    /// Gets the list of optional chunks from the GBlorb file.
+    /// </summary>
+    /// <returns>A list of chunks that are not identified as resources.</returns>
+    public List<IChunk> GetOptionalChunks() => Chunks.Where(c => c.IsResource() == false).ToList();
+
     #endregion
 }

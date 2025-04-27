@@ -128,6 +128,32 @@ public class BinaryChunk : Chunk
                 return base.FileExtension();
         }
     }
+
+    /// <summary>
+    /// Gets the resource type of the chunk based on its name.
+    /// </summary>
+    /// <returns>Resource type or empty string if unknown</returns>
+    public override string ResourceType()
+    {
+        switch (Name)
+        {
+            case "BINA":
+                return "Data";
+            case "JPEG":
+            case "PNG ":
+                return "Pict";
+            case "OGGV":
+            case "AIFF":
+            case "MIDI":
+            case "MOD ":
+                return "Snd ";
+            case "ZCOD":
+            case "GLUL":
+                return "Exec";
+            default:
+                return base.ResourceType();
+        }
+    }
     #endregion
 }
 

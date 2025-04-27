@@ -121,5 +121,11 @@ class TextChunk : Chunk
                 return base.FileExtension();
         }
     }
+
+    /// <summary>
+    /// Gets the resource type of the chunk based on its name.
+    /// </summary>
+    /// <returns>Resource type as string</returns>
+    public override string ResourceType() => "Text";
     #endregion
 }

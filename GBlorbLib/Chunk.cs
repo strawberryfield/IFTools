@@ -35,6 +35,11 @@ public class Chunk : IChunk
     /// Gets or sets the address of the chunk.
     /// </summary>
     public Int32 Address { get; set; }
+
+    /// <summary>
+    /// Gets or sets the resource ID of the chunk.
+    /// </summary>
+    public Int32 ResourceID { get; set; }
     #endregion
 
     #region Constructors
@@ -101,6 +106,8 @@ public class Chunk : IChunk
     /// </summary>
     /// <returns><c>true</c> if the chunk is a resource; otherwise, <c>false</c>.</returns>
     public virtual bool IsResource() => false;
+
+    public virtual string ResourceType() => string.Empty;
 
     public virtual string FileExtension() => ".dat";
     #endregion

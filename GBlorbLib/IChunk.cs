@@ -35,6 +35,11 @@ public interface IChunk
     /// Gets or sets the address of the chunk.
     /// </summary>
     Int32 Address { get; set; }
+
+    /// <summary>
+    /// Gets or sets the resource ID of the chunk.
+    /// </summary>
+    Int32 ResourceID { get; set; }
     #endregion
 
     #region Methods
@@ -57,6 +62,16 @@ public interface IChunk
     /// <returns>True if the chunk is a resource; otherwise, false.</returns>
     bool IsResource();
 
+    /// <summary>
+    /// Gets the resource type of the chunk.
+    /// </summary>
+    /// <returns>Type of the resource in the chunk, empty if the chunk is not a resorce</returns>
+    string ResourceType();
+
+    /// <summary>
+    /// Gets the file extension associated with the chunk.
+    /// </summary>
+    /// <returns>The file extension as a string.</returns>
     string FileExtension();
     #endregion
 }
