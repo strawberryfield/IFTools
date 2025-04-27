@@ -16,6 +16,7 @@
 using Mono.Options;
 using Casasoft.IF.GBlorbLib;
 
+#region main
 bool ShouldShowHelp = false;
 bool ShouldSuppressBanner = false;
 bool ShouldList = false;
@@ -29,7 +30,7 @@ OptionSet p = new OptionSet()
     { "x|extract=", "Extract the resources in the specified dir", o => ExtractDir = o },
 };
 
-List<string> FilesList = p.Parse(args);
+List<string> FilesList = ExpandWildcards(p.Parse(args));
 
 if (ShouldShowHelp || FilesList.Count == 0)
 {
@@ -39,22 +40,29 @@ if (ShouldShowHelp || FilesList.Count == 0)
 }
 
 if (!ShouldSuppressBanner)
-    ShowBanner();   
+    ShowBanner();
 
-GBlorb Blorb = new(FilesList[0]);
-
-if (ShouldList)
+foreach (string file in FilesList)
 {
-    Console.WriteLine(Blorb.ToString());
-    return;
-}
+    GBlorb Blorb = new(file);
 
-if (!string.IsNullOrEmpty(ExtractDir))
-{
-    Directory.CreateDirectory(ExtractDir);
-    Blorb.Export(ExtractDir);
-    return;
+    if (ShouldList)
+    {
+        Console.WriteLine($"Content of: {file}");
+        Console.WriteLine(new string('-', file.Length+12));
+        Console.WriteLine(Blorb.ToString());
+    }
+
+    if (!string.IsNullOrWhiteSpace(ExtractDir))
+    {
+        Console.WriteLine($"Extracting: {file}");
+        string name = Path.GetFileNameWithoutExtension(file);
+        string path = Path.Combine(ExtractDir, name);
+        Directory.CreateDirectory(path);
+        Blorb.Export(path);
+    }
 }
+#endregion
 
 #region Procedures
 void ShowHelp()
@@ -67,4 +75,35 @@ void ShowHelp()
 }
 
 void ShowBanner() => Console.WriteLine("Casasoft GBlorbExtractor v1.0\n(c) 2025 Roberto Ceccarelli - Casasoft\n");
+
+/// <summary>
+/// Expands wildcard patterns in file paths to match actual files in the directory.
+/// This is necessary because the Windows shell does not automatically expand wildcards.
+/// For each file path in the input list, if it contains wildcard characters ('*' or '?'),
+/// it retrieves all matching files from the specified directory. Otherwise, it adds the
+/// file path directly to the result list.
+/// </summary>
+/// <param name="FilesList">A list of file paths, which may include wildcard patterns.</param>
+/// <returns>A list of file paths with wildcards expanded to match actual files.</returns>
+List<string> ExpandWildcards(List<string> FilesList)
+{
+    List<string> files = new();
+    foreach (string filename in FilesList)
+    {
+        if (filename.Contains('*') || filename.Contains('?'))
+        {
+            string? path = Path.GetDirectoryName(filename);
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                path = ".";
+            }
+            files.AddRange(Directory.GetFiles(path, Path.GetFileName(filename)).ToList());
+        }
+        else
+        {
+            files.Add(filename);
+        }
+    }
+    return files;
+}
 #endregion
