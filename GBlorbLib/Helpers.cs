@@ -22,6 +22,7 @@ namespace Casasoft.IF.GBlorbLib;
 /// </summary>
 public static class Helpers
 {
+    #region strings handling
     /// <summary>
     /// Reads an ASCII string from a byte array.
     /// </summary>
@@ -34,6 +35,19 @@ public static class Helpers
         return Encoding.ASCII.GetString(data, offset, length);
     }
 
+    /// <summary>
+    /// Writes an ASCII string to a byte array.
+    /// </summary>
+    /// <param name="data">The byte array to write to.</param>
+    /// <param name="offset">The zero-based byte offset in <paramref name="data"/> at which to begin writing.</param>
+    /// <param name="value">The string value to write.</param>
+    public static void WriteString(byte[] data, int offset, string value)
+    {
+        Encoding.ASCII.GetBytes(value).CopyTo(data, offset);
+    }
+    #endregion
+
+    #region integers handling
     /// <summary>
     /// Reads a 32-bit integer from a byte array.
     /// </summary>
@@ -55,17 +69,6 @@ public static class Helpers
     }
 
     /// <summary>
-    /// Writes an ASCII string to a byte array.
-    /// </summary>
-    /// <param name="data">The byte array to write to.</param>
-    /// <param name="offset">The zero-based byte offset in <paramref name="data"/> at which to begin writing.</param>
-    /// <param name="value">The string value to write.</param>
-    public static void WriteString(byte[] data, int offset, string value)
-    {
-        Encoding.ASCII.GetBytes(value).CopyTo(data, offset);
-    }
-
-    /// <summary>
     /// Writes a 32-bit integer to a byte array.
     /// </summary>
     /// <param name="data">The byte array to write to.</param>
@@ -82,4 +85,12 @@ public static class Helpers
             BitConverter.GetBytes(value).CopyTo(data, offset);
         }
     }
+
+    /// <summary>
+    /// Determines whether the specified integer is odd.
+    /// </summary>
+    /// <param name="value">The integer to check.</param>
+    /// <returns><c>true</c> if the integer is odd; otherwise, <c>false</c>.</returns>
+    public static bool IsOdd(int value) => (value & 1) == 1;
+    #endregion 
 }

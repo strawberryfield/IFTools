@@ -55,6 +55,16 @@ class TextChunk : Chunk
         Content = Helpers.ReadString(data, offset + 8, Length);
         SkipZeroBytes(data, offset + 8 + Length);
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TextChunk"/> class with the specified name and content.
+    /// </summary>
+    /// <param name="name">The name of the chunk.</param>
+    /// <param name="content">The content of the text chunk.</param>
+    public TextChunk(string name, string content) : base(name)
+    {
+        Content = content;
+    }
     #endregion
 
     #region Methods
@@ -85,6 +95,10 @@ class TextChunk : Chunk
     /// <param name="offset">The offset within the byte array where the content should be written.</param>
     public override void Write(byte[] data, int offset)
     {
+        if (Helpers.IsOdd(Content.Length))
+        {
+            Content += '\0';
+        }
         base.Write(data, offset);
         Helpers.WriteString(data, offset + 8, Content);
     }
@@ -125,7 +139,7 @@ class TextChunk : Chunk
     /// <summary>
     /// Gets the resource type of the chunk based on its name.
     /// </summary>
-    /// <returns>Resource type as string</returns>
+    /// <returns>The resource type as a string.</returns>
     public override string ResourceType() => "Text";
     #endregion
 }

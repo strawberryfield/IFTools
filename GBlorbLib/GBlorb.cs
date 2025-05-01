@@ -32,17 +32,17 @@ public class GBlorb
     /// <summary>
     /// Gets or sets the header of the GBlorb file.
     /// </summary>
-    public Header Header;
+    public Header Header { get; protected set; }
 
     /// <summary>
     /// Gets or sets the resource index of the GBlorb file.
     /// </summary>
-    public ResourceIndex ResourceIndex;
+    public ResourceIndex ResourceIndex { get; protected set; }
 
     /// <summary>
     /// Gets or sets the list of chunks in the GBlorb file.
     /// </summary>
-    public List<IChunk> Chunks;
+    public List<IChunk> Chunks { get; protected set;}
     #endregion
 
     #region Constructors    
@@ -122,6 +122,13 @@ public class GBlorb
         }
     }
 
+    public void Write(string filename)
+    {
+        ResourceIndex = new(GetResourceChunks());
+        using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+        using BinaryWriter bw = new(fs);
+    }
+
     /// <summary>
     /// Gets the list of resource chunks from the GBlorb file.
     /// </summary>
@@ -134,5 +141,20 @@ public class GBlorb
     /// <returns>A list of chunks that are not identified as resources.</returns>
     public List<IChunk> GetOptionalChunks() => Chunks.Where(c => c.IsResource() == false).ToList();
 
+    /// <summary>
+    /// Retrieves a chunk by its type and resource number.
+    /// </summary>
+    /// <param name="type">The type of the chunk.</param>
+    /// <param name="resourceNumber">The resource number of the chunk.</param>
+    /// <returns>The chunk matching the specified type and resource number, or null if not found.</returns>
+    public IChunk? GetChunkByTypeAndResourceNumber(string type, int resourceNumber) =>
+        Chunks.FirstOrDefault(c => c.Name == type && c.ResourceID == resourceNumber);
+
+    /// <summary>
+    /// Retrieves a chunk by its type.
+    /// </summary>
+    /// <param name="type">The type of the chunk to retrieve.</param>
+    /// <returns>The chunk matching the specified type, or null if not found.</returns>
+    public IChunk? GetChunkByType(string type) => Chunks.FirstOrDefault(c => c.Name == type);
     #endregion
 }
