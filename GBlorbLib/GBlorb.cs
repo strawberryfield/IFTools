@@ -122,11 +122,26 @@ public class GBlorb
         }
     }
 
+    /// <summary>
+    /// Writes the GBlorb data, including the header, resource index, and chunks, to the specified file.
+    /// </summary>
+    /// <param name="filename">The name of the file to write the GBlorb data to.</param>
     public void Write(string filename)
     {
         ResourceIndex = new(GetResourceChunks());
-        using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-        using BinaryWriter bw = new(fs);
+        Header = new(Chunks, ResourceIndex);
+        Data = new byte[Header.Length + 8];
+
+        Header.Write(Data, 0);
+        ResourceIndex.Write(Data, 12);
+        int offset = 12 + 8 + ResourceIndex.Length;
+        foreach (IChunk chunk in Chunks)
+        {
+            chunk.Write(Data, offset);
+            offset += 8 + chunk.Length;
+        }
+
+        File.WriteAllBytes(filename, Data);
     }
 
     /// <summary>

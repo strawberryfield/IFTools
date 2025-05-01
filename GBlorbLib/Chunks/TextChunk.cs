@@ -95,12 +95,9 @@ class TextChunk : Chunk
     /// <param name="offset">The offset within the byte array where the content should be written.</param>
     public override void Write(byte[] data, int offset)
     {
-        if (Helpers.IsOdd(Content.Length))
-        {
-            Content += '\0';
-        }
         base.Write(data, offset);
         Helpers.WriteString(data, offset + 8, Content);
+        FillZero(data, offset);
     }
 
     /// <summary>

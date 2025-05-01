@@ -51,6 +51,13 @@ public interface IChunk
     void Write(byte[] data, int offset);
 
     /// <summary>
+    /// Fills the specified byte array with zero at the given offset if the chunk length is odd.
+    /// </summary>
+    /// <param name="data">The byte array to fill with zero.</param>
+    /// <param name="offset">The offset within the byte array where the zero should be written.</param>
+    void FillZero(byte[] data, int offset);
+
+    /// <summary>
     /// Exports the chunk to a file.
     /// </summary>
     /// <param name="filename">The name of the file to export to.</param>

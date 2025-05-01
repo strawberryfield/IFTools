@@ -94,6 +94,19 @@ public class Chunk : IChunk
     }
 
     /// <summary>
+    /// Fills the specified byte array with zero at the given offset if the chunk length is odd.
+    /// </summary>
+    /// <param name="data">The byte array to fill with zero.</param>
+    /// <param name="offset">The offset within the byte array where the zero should be written.</param>
+    public virtual void FillZero(byte[] data, int offset)
+    {
+        if (Helpers.IsOdd(Length))
+        {
+            data[offset + 8 + Length] = 0;
+        }
+    }
+
+    /// <summary>
     /// Exports the chunk data to the specified file.
     /// </summary>
     /// <param name="filename">The name of the file to export the chunk data to.</param>

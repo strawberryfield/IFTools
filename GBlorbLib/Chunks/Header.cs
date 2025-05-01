@@ -34,6 +34,9 @@ public class Header : Chunk
     public Header() : base("FORM")
     {
         Type = "IFRS";
+        Length = 0;
+        Address = 0;
+        ResourceID = -1;
     }
 
     /// <summary>
@@ -43,6 +46,16 @@ public class Header : Chunk
     public Header(byte[] data) : base(data, 0)
     {
         Type = Helpers.ReadString(data, 8, 4);
+    }
+
+    public Header(List<IChunk> chunks, ResourceIndex resourceIndex) : this()
+    {
+        Length = resourceIndex.Length + 8;
+        foreach (var chunk in chunks)
+        {
+            Length += chunk.Length + 8;
+            Length += Helpers.IsOdd(chunk.Length) ? 1 : 0;
+        }
     }
     #endregion
 

@@ -50,7 +50,7 @@ public class BinaryChunk : Chunk
     /// <param name="data">The byte array containing the chunk data.</param>
     /// <param name="offset">The offset within the byte array where the chunk starts.</param>
     public BinaryChunk(byte[] data, int offset) : base(data, offset)
-    {
+    { 
         Content = new byte[Length];
         Array.Copy(data, offset + 8, Content, 0, Length);
         SkipZeroBytes(data, offset + 8 + Length);
@@ -73,6 +73,7 @@ public class BinaryChunk : Chunk
     {
         base.Write(data, offset);
         Array.Copy(Content, 0, data, offset + 8, data.Length);
+        FillZero(data, offset);
     }
 
     /// <summary>
