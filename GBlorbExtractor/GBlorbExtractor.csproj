@@ -15,4 +15,10 @@
     <ProjectReference Include="..\GBlorbLib\GBlorbLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="GBlorbExtractor">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
