@@ -67,7 +67,7 @@ foreach (string file in FilesList)
 #region Procedures
 void ShowHelp()
 {
-    Console.WriteLine("Usage: GBlorbExtractor [OPTIONS] FILE");
+    Console.WriteLine("Usage: GBlorbExtractor [OPTIONS] FILES");
     Console.WriteLine("Extracts the resources from a GBlorb file.");
     Console.WriteLine();
     Console.WriteLine("Options:");

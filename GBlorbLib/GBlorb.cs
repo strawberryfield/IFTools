@@ -135,13 +135,27 @@ public class GBlorb
         Header.Write(Data, 0);
         ResourceIndex.Write(Data, 12);
         int offset = 12 + 8 + ResourceIndex.Length;
-        foreach (IChunk chunk in Chunks)
+        offset = WriteChunkList(Data, offset, GetResourceChunks());
+        offset = WriteChunkList(Data, offset, GetOptionalChunks());
+     
+        File.WriteAllBytes(filename, Data);
+    }
+
+    /// <summary>
+    /// Writes a list of chunks to the specified byte array starting at the given offset.
+    /// </summary>
+    /// <param name="data">The byte array to write the chunk data to.</param>
+    /// <param name="offset">The offset within the byte array where the chunk data should be written.</param>
+    /// <param name="chunks">The list of chunks to write to the byte array.</param>
+    /// <returns>The updated offset after writing all chunks.</returns>
+    protected int WriteChunkList(byte[] data, int offset, List<IChunk> chunks)
+    {
+        foreach (IChunk chunk in chunks)
         {
-            chunk.Write(Data, offset);
+            chunk.Write(data, offset);
             offset += 8 + chunk.Length;
         }
-
-        File.WriteAllBytes(filename, Data);
+        return offset;
     }
 
     /// <summary>

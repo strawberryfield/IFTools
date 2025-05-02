@@ -108,7 +108,6 @@ class TextChunk : Chunk
     {
         switch (Name)
         {
-            case "IFmd":
             case "TEXT":
                 return true;
             default:

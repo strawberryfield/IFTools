@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GBlorbEd": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\\\rober\\Documents\\\\Inform\\Projects\\EspressoMoka\\Espresso Moka.materials\\Release\\Espresso Moka.gblorb\" -o c:\\temp\\test.gblorb"
+    }
+  }
+}

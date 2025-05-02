@@ -34,7 +34,7 @@ public class Header : Chunk
     public Header() : base("FORM")
     {
         Type = "IFRS";
-        Length = 0;
+        Length = 4;
         Address = 0;
         ResourceID = -1;
     }
@@ -50,7 +50,7 @@ public class Header : Chunk
 
     public Header(List<IChunk> chunks, ResourceIndex resourceIndex) : this()
     {
-        Length = resourceIndex.Length + 8;
+        Length = resourceIndex.Length + 12;
         foreach (var chunk in chunks)
         {
             Length += chunk.Length + 8;

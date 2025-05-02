@@ -72,7 +72,7 @@ public class BinaryChunk : Chunk
     public override void Write(byte[] data, int offset)
     {
         base.Write(data, offset);
-        Array.Copy(Content, 0, data, offset + 8, data.Length);
+        Array.Copy(Content, 0, data, offset + 8, Content.Length);
         FillZero(data, offset);
     }
 

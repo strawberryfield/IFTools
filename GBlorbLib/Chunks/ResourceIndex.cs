@@ -69,9 +69,9 @@ public class ResourceIndex : Chunk
     public ResourceIndex(List<IChunk> chunks) : base("RIdx")
     {
         TotalResourcesCount = chunks.Count;
-        Length = TotalResourcesCount * 12 + 12;
+        Length = TotalResourcesCount * 12 + 4;
         ResourcesEntries = new();
-        int progressiveAddress = 12 + Length;
+        int progressiveAddress = 12 + Length+8;
         foreach (IChunk chunk in chunks)
         {
             ResourceEntry entry = new(chunk.ResourceType())
@@ -81,7 +81,7 @@ public class ResourceIndex : Chunk
             };
             ResourcesEntries.Add(entry);
 
-            progressiveAddress += chunk.Length;
+            progressiveAddress += (chunk.Length+8);
         }
     }
     #endregion
