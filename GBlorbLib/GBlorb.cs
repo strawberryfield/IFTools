@@ -19,7 +19,7 @@ namespace Casasoft.IF.GBlorbLib;
 
 /// <summary>
 /// Represents a GBlorb file format, which is used for packaging resources for interactive fiction games.
-/// <see cref="https://github.com/iftechfoundation/ifarchive-if-specs/blob/main/Blorb-Spec.md"/>
+/// <see href="https://github.com/iftechfoundation/ifarchive-if-specs/blob/main/Blorb-Spec.md"/>
 /// </summary>
 public class GBlorb
 {
@@ -42,7 +42,7 @@ public class GBlorb
     /// <summary>
     /// Gets or sets the list of chunks in the GBlorb file.
     /// </summary>
-    public List<IChunk> Chunks { get; protected set;}
+    public List<IChunk> Chunks { get; protected set; }
     #endregion
 
     #region Constructors    
@@ -116,10 +116,7 @@ public class GBlorb
         }
 
         IChunk? IFmd = Chunks.FirstOrDefault(c => c.Name == "IFmd");
-        if (IFmd != null)
-        {
-            IFmd.Export(Path.Combine(path, "IFmd.xml"));
-        }
+        IFmd?.Export(Path.Combine(path, "IFmd.xml"));
     }
 
     /// <summary>
@@ -137,7 +134,7 @@ public class GBlorb
         int offset = 12 + 8 + ResourceIndex.Length;
         offset = WriteChunkList(Data, offset, GetResourceChunks());
         offset = WriteChunkList(Data, offset, GetOptionalChunks());
-     
+
         File.WriteAllBytes(filename, Data);
     }
 
@@ -148,7 +145,7 @@ public class GBlorb
     /// <param name="offset">The offset within the byte array where the chunk data should be written.</param>
     /// <param name="chunks">The list of chunks to write to the byte array.</param>
     /// <returns>The updated offset after writing all chunks.</returns>
-    protected int WriteChunkList(byte[] data, int offset, List<IChunk> chunks)
+    protected static int WriteChunkList(byte[] data, int offset, List<IChunk> chunks)
     {
         foreach (IChunk chunk in chunks)
         {
@@ -162,13 +159,13 @@ public class GBlorb
     /// Gets the list of resource chunks from the GBlorb file.
     /// </summary>
     /// <returns>A list of chunks that are identified as resources.</returns>
-    public List<IChunk> GetResourceChunks() => Chunks.Where(c => c.IsResource() == true).ToList();
+    public List<IChunk> GetResourceChunks() => Chunks.Where(c => c.IsResource()).ToList();
 
     /// <summary>
     /// Gets the list of optional chunks from the GBlorb file.
     /// </summary>
     /// <returns>A list of chunks that are not identified as resources.</returns>
-    public List<IChunk> GetOptionalChunks() => Chunks.Where(c => c.IsResource() == false).ToList();
+    public List<IChunk> GetOptionalChunks() => Chunks.Where(c => !c.IsResource()).ToList();
 
     /// <summary>
     /// Retrieves a chunk by its type and resource number.
@@ -185,5 +182,25 @@ public class GBlorb
     /// <param name="type">The type of the chunk to retrieve.</param>
     /// <returns>The chunk matching the specified type, or null if not found.</returns>
     public IChunk? GetChunkByType(string type) => Chunks.FirstOrDefault(c => c.Name == type);
+
+    /// <summary>
+    /// Adds or updates an optional text chunk in the GBlorb file.
+    /// </summary>
+    /// <param name="name">The name of the text chunk.</param>
+    /// <param name="text">The text content to add or update.</param>
+    public void AddUpdateOptionalTextChunk(string name, string text)
+    {
+        IChunk? chunk = GetChunkByType(name);
+        if (chunk != null)
+        {
+            TextChunk textChunk = (TextChunk)chunk;
+            textChunk.Content = text;
+        }
+        else
+        {
+            TextChunk textChunk = new(name, text);
+            Chunks.Add(textChunk);
+        }
+    }
     #endregion
 }

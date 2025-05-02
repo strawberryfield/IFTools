@@ -18,13 +18,22 @@ namespace Casasoft.IF.GBlorbLib;
 /// <summary>
 /// Represents a text chunk in a Blorb file.
 /// </summary>
-class TextChunk : Chunk
+public class TextChunk : Chunk
 {
     #region Properties
+    private string _content = string.Empty; // Initialize to avoid CS8618
     /// <summary>
     /// Gets or sets the content of the text chunk.
     /// </summary>
-    public string Content { get; set; }
+    public string Content
+    {
+        get { return _content; }
+        set
+        {
+            _content = value;
+            Length = _content.Length;
+        }
+    }
     #endregion
 
     #region Constructors

@@ -19,13 +19,20 @@ using Casasoft.IF.GBlorbLib;
 #region main
 bool ShouldShowHelp = false;
 bool ShouldSuppressBanner = false;
-string OutputName = string.Empty;   
+string OutputName = string.Empty;
 
-OptionSet p = new OptionSet()
+string AuthorName = string.Empty;
+string Copyright = string.Empty;
+string Annotations = string.Empty;
+
+OptionSet p = new()
 {
     { "q|quiet", "Suppress banner print", v => ShouldSuppressBanner = v != null },
     { "h|?|help", "Show this help", v => ShouldShowHelp = v != null },
     { "o|output=", "Output filename", o => OutputName = o },
+    { "a|author=", "Author name", o => AuthorName = o },
+    { "c|copyright=", "Copyright notice", o => Copyright = o },
+    { "r|remarks=|annotations=", "Annotations", o => Annotations = o },
 };
 
 List<string> FilesList = p.Parse(args);
@@ -41,6 +48,22 @@ if (!ShouldSuppressBanner)
     ShowBanner();
 
 GBlorb Blorb = new(FilesList[0]);
+
+if (!string.IsNullOrWhiteSpace(AuthorName))
+{
+    Blorb.AddUpdateOptionalTextChunk("AUTH", AuthorName);
+}
+
+if (!string.IsNullOrWhiteSpace(Copyright))
+{
+    Blorb.AddUpdateOptionalTextChunk("(c) ", Copyright);
+}
+
+if (!string.IsNullOrWhiteSpace(Annotations))
+{
+    Blorb.AddUpdateOptionalTextChunk("ANNO", Annotations);
+}
+
 Blorb.Write(OutputName);
 #endregion
 

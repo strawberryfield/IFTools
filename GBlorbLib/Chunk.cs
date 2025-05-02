@@ -120,8 +120,16 @@ public class Chunk : IChunk
     /// <returns><c>true</c> if the chunk is a resource; otherwise, <c>false</c>.</returns>
     public virtual bool IsResource() => false;
 
+    /// <summary>
+    /// Gets the resource type of the chunk.
+    /// </summary>
+    /// <returns>The resource type as a string, or an empty string if the chunk is not a resource.</returns>
     public virtual string ResourceType() => string.Empty;
 
+    /// <summary>
+    /// Gets the file extension associated with the chunk.
+    /// </summary>
+    /// <returns>The file extension as a string.</returns>
     public virtual string FileExtension() => ".dat";
     #endregion
 

@@ -71,7 +71,7 @@ public class ResourceIndex : Chunk
         TotalResourcesCount = chunks.Count;
         Length = TotalResourcesCount * 12 + 4;
         ResourcesEntries = new();
-        int progressiveAddress = 12 + Length+8;
+        int progressiveAddress = 12 + Length + 8;
         foreach (IChunk chunk in chunks)
         {
             ResourceEntry entry = new(chunk.ResourceType())
@@ -81,7 +81,7 @@ public class ResourceIndex : Chunk
             };
             ResourcesEntries.Add(entry);
 
-            progressiveAddress += (chunk.Length+8);
+            progressiveAddress += (chunk.Length + 8);
         }
     }
     #endregion
@@ -119,6 +119,11 @@ public class ResourceIndex : Chunk
         }
     }
 
+    /// <summary>
+    /// Gets the resource number by its address.
+    /// </summary>
+    /// <param name="address">The address of the resource.</param>
+    /// <returns>The resource number if found; otherwise, -1.</returns>
     public Int32 GetResourceNumberByAddress(Int32 address) => ResourcesEntries.FirstOrDefault(e => e.Start == address)?.Number ?? -1;
     #endregion
 }

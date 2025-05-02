@@ -20,7 +20,7 @@ namespace Casasoft.IF.GBlorbLib;
 /// <summary>
 /// Provides helper methods for reading and writing strings and 32-bit integers.
 /// </summary>
-public static class Helpers
+internal static class Helpers
 {
     #region strings handling
     /// <summary>

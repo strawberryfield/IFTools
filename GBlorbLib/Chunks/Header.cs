@@ -48,6 +48,11 @@ public class Header : Chunk
         Type = Helpers.ReadString(data, 8, 4);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Header"/> class using a list of chunks and a resource index.
+    /// </summary>
+    /// <param name="chunks">The list of chunks to include in the header.</param>
+    /// <param name="resourceIndex">The resource index containing metadata about the resources.</param>
     public Header(List<IChunk> chunks, ResourceIndex resourceIndex) : this()
     {
         Length = resourceIndex.Length + 12;

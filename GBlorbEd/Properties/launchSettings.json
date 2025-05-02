@@ -2,7 +2,7 @@
   "profiles": {
     "GBlorbEd": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\\\rober\\Documents\\\\Inform\\Projects\\EspressoMoka\\Espresso Moka.materials\\Release\\Espresso Moka.gblorb\" -o c:\\temp\\test.gblorb"
+      "commandLineArgs": "\"C:\\Users\\\\rober\\Documents\\\\Inform\\Projects\\EspressoMoka\\Espresso Moka.materials\\Release\\Espresso Moka.gblorb\" -o c:\\temp\\test.gblorb --author=\"Roberto Ceccarelli\" -c\"2025 Roberto Ceccarelli - The Strawberry Field\" --annotations=\"Rebuild with Casasoft GBlorbEd\""
     }
   }
 }
