@@ -17,6 +17,15 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Description>A collection of tools to handle GBlorb files for interactive fictions</Description>
     <AssemblyName>Casasoft.IF.$(MSBuildProjectName)</AssemblyName>
+    <RepositoryUrl>https://github.com/strawberryfield/IFTools</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
