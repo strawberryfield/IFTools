@@ -24,12 +24,15 @@ string OutputName = string.Empty;
 string AuthorName = string.Empty;
 string Copyright = string.Empty;
 string Annotations = string.Empty;
+string sFrontispice = string.Empty;
+Int32 Frontispice = 0;
 
 OptionSet p = new()
 {
     { "q|quiet", "Suppress banner print", v => ShouldSuppressBanner = v != null },
     { "h|?|help", "Show this help", v => ShouldShowHelp = v != null },
     { "o|output=", "Output filename", o => OutputName = o },
+    { "f|frontispice=", "Frontispice resource number", f => sFrontispice = f },
     { "a|author=", "Author name", o => AuthorName = o },
     { "c|copyright=", "Copyright notice", o => Copyright = o },
     { "r|remarks=|annotations=", "Annotations", o => Annotations = o },
@@ -48,6 +51,11 @@ if (!ShouldSuppressBanner)
     ShowBanner();
 
 GBlorb Blorb = new(FilesList[0]);
+
+if (!string.IsNullOrWhiteSpace(sFrontispice) && Int32.TryParse(sFrontispice, out Frontispice))
+{
+    Blorb.AddUpdateFrontispiceChunk(Frontispice);
+}
 
 if (!string.IsNullOrWhiteSpace(AuthorName))
 {

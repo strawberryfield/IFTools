@@ -202,5 +202,24 @@ public class GBlorb
             Chunks.Add(textChunk);
         }
     }
+
+    /// <summary>
+    /// Adds or updates the frontispiece chunk in the GBlorb file.
+    /// </summary>
+    /// <param name="res">The resource number to set for the frontispiece chunk.</param>
+    public void AddUpdateFrontispiceChunk(Int32 res)
+    {
+        IChunk? chunk = GetChunkByType("Fspc");
+        if (chunk != null)
+        {
+            FrontispiceChunk fChunk = (FrontispiceChunk)chunk;
+            fChunk.ResourceNumber = res;
+        }
+        else
+        {
+            FrontispiceChunk fChunk = new(res);
+            Chunks.Add(fChunk);
+        }
+    }
     #endregion
 }

@@ -40,7 +40,7 @@ public static class ChunkFactory
             case "RDes":
                 return new ResourceDescriptionIndex(data, offset);
             case "Fspc":
-                return new Frontispiece(data, offset);
+                return new FrontispiceChunk(data, offset);
 
             case "TEXT":
             case "IFmd":

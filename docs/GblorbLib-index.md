@@ -8,7 +8,7 @@
 
 [ChunkFactory](./casasoft.if.gblorblib.chunkfactory)
 
-[Frontispiece](./casasoft.if.gblorblib.frontispiece)
+[FrontispiceChunk](./casasoft.if.gblorblib.frontispicechunk)
 
 [GBlorb](./casasoft.if.gblorblib.gblorb)
 

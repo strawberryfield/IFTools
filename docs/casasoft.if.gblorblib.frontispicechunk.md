@@ -1,14 +1,14 @@
-# Frontispiece
+# FrontispiceChunk
 
 Namespace: Casasoft.IF.GBlorbLib
 
-Represents a frontispiece chunk in a GBlorb file.
+Represents a frontispice chunk in a GBlorb file.
 
 ```csharp
-public class Frontispiece : Chunk, IChunk
+public class FrontispiceChunk : Chunk, IChunk
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [Chunk](./casasoft.if.gblorblib.chunk) → [Frontispiece](./casasoft.if.gblorblib.frontispiece)<br>
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [Chunk](./casasoft.if.gblorblib.chunk) → [FrontispiceChunk](./casasoft.if.gblorblib.frontispicechunk)<br>
 Implements [IChunk](./casasoft.if.gblorblib.ichunk)<br>
 Attributes [NullableContextAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.nullableattribute)
 
@@ -16,7 +16,7 @@ Attributes [NullableContextAttribute](https://docs.microsoft.com/en-us/dotnet/ap
 
 ### **ResourceNumber**
 
-Gets or sets the resource number of the frontispiece.
+Gets or sets the resource number of the frontispice.
 
 ```csharp
 public int ResourceNumber { get; set; }
@@ -76,48 +76,48 @@ public int ResourceID { get; set; }
 
 ## Constructors
 
-### **Frontispiece()**
+### **FrontispiceChunk()**
 
-Initializes a new instance of the [Frontispiece](./casasoft.if.gblorblib.frontispiece) class with the default name "Fspc".
+Initializes a new instance of the [FrontispiceChunk](./casasoft.if.gblorblib.frontispicechunk) class with the default name "Fspc".
 
 ```csharp
-public Frontispiece()
+public FrontispiceChunk()
 ```
 
-### **Frontispiece(String)**
+### **FrontispiceChunk(Int32)**
 
-Initializes a new instance of the [Frontispiece](./casasoft.if.gblorblib.frontispiece) class with the specified name.
+Initializes a new instance of the [FrontispiceChunk](./casasoft.if.gblorblib.frontispicechunk) class with the specified resource reference.
 
 ```csharp
-public Frontispiece(string name)
+public FrontispiceChunk(int res)
 ```
 
 #### Parameters
 
-`name` [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
-The name of the frontispiece chunk.
+`res` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+The resource of the frontispice.
 
-### **Frontispiece(Byte[], Int32)**
+### **FrontispiceChunk(Byte[], Int32)**
 
-Initializes a new instance of the [Frontispiece](./casasoft.if.gblorblib.frontispiece) class with the specified data and offset.
+Initializes a new instance of the [FrontispiceChunk](./casasoft.if.gblorblib.frontispicechunk) class with the specified data and offset.
 
 ```csharp
-public Frontispiece(Byte[] data, int offset)
+public FrontispiceChunk(Byte[] data, int offset)
 ```
 
 #### Parameters
 
 `data` [Byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte)<br>
-The byte array containing the frontispiece data.
+The byte array containing the frontispice data.
 
 `offset` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
-The offset within the byte array where the frontispiece data starts.
+The offset within the byte array where the frontispice data starts.
 
 ## Methods
 
 ### **ToString()**
 
-Returns a string that represents the current frontispiece.
+Returns a string that represents the current frontispice.
 
 ```csharp
 public string ToString()
@@ -126,11 +126,11 @@ public string ToString()
 #### Returns
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
-A string that represents the current frontispiece.
+A string that represents the current frontispice.
 
 ### **Export(String)**
 
-Exports the frontispiece data to the specified file.
+Exports the frontispice data to the specified file.
 
 ```csharp
 public void Export(string filename)
@@ -139,11 +139,11 @@ public void Export(string filename)
 #### Parameters
 
 `filename` [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
-The name of the file to export the frontispiece data to.
+The name of the file to export the frontispice data to.
 
 ### **Write(Byte[], Int32)**
 
-Writes the frontispiece data to the specified byte array at the given offset.
+Writes the frontispice data to the specified byte array at the given offset.
 
 ```csharp
 public void Write(Byte[] data, int offset)
@@ -152,7 +152,7 @@ public void Write(Byte[] data, int offset)
 #### Parameters
 
 `data` [Byte[]](https://docs.microsoft.com/en-us/dotnet/api/system.byte)<br>
-The byte array to write the frontispiece data to.
+The byte array to write the frontispice data to.
 
 `offset` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
-The offset within the byte array where the frontispiece data should be written.
+The offset within the byte array where the frontispice data should be written.

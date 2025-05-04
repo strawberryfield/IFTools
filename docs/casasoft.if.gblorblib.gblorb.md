@@ -227,3 +227,16 @@ The name of the text chunk.
 
 `text` [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 The text content to add or update.
+
+### **AddUpdateFrontispiceChunk(Int32)**
+
+Adds or updates the frontispiece chunk in the GBlorb file.
+
+```csharp
+public void AddUpdateFrontispiceChunk(int res)
+```
+
+#### Parameters
+
+`res` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+The resource number to set for the frontispiece chunk.
