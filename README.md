@@ -15,6 +15,10 @@ IFTools is a collection of tools for working with Interactive Fiction (IF) games
 - **GBlorbExtract**: A command-line tool for extracting text and resources from GBlorb files.
 - **GBlorbEd**: A command-line tool for editing GBlorb files, including adding or updating optional text chunks.
 
+## Documentation
+
+- [Online documentation on GitHub Pages](https://strawberryfield.github.io/IFTools/)
+  
 ## Dependencies
 
 - **.NET 8**
