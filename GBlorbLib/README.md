@@ -1,6 +1,9 @@
 ﻿# GBlorbLib
 
-**GBlorbLib** is a .NET library for working with the GBlorb file format, which is used to package resources for interactive fiction (IF) games. It provides functionality to read, manipulate, and write GBlorb files, including handling headers, resource indices, and chunks.
+**GBlorbLib** is a .NET library for working with the GBlorb file format, 
+which is used to package resources for interactive fiction (IF) games. 
+It provides functionality to read, manipulate, and write GBlorb files,
+including handling headers, resource indices, and chunks.
 
 ## Features
 
@@ -11,7 +14,8 @@
 
 ## Installation
 
-To use **GBlorbLib** in your project, add a reference to the library. If using Visual Studio, you can include the compiled DLL or add the source code directly to your solution.
+To use **GBlorbLib** in your project, add a reference to the library. 
+If using Visual Studio, you can include the NuGet package.
 
 ## Usage
 
@@ -49,6 +53,9 @@ blorb.AddUpdateOptionalTextChunk("ANNO", "Annotations or remarks");
 blorb.Write("path/to/output.gblorb");
 ```
 
+## Online documentation
+
+For detailed documentation, including API references, visit the [GBlorbLib documentation site](https://strawberryfield.github.io/IFTools/GblorbLib-index).
 
 ## Dependencies
 
