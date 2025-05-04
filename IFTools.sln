@@ -16,6 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBlorbEd", "GBlorbEd\GBlorbEd.csproj", "{E29CC837-0E5B-4601-B08C-E990BF37EF67}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build_tools", "build_tools", "{BA10EF88-792C-42A1-B916-8124F03AB070}"
+	ProjectSection(SolutionItems) = preProject
+		build_tools\builddoc.cmd = build_tools\builddoc.cmd
+		build_tools\publish.cmd = build_tools\publish.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

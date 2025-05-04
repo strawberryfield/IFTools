@@ -22,7 +22,7 @@ IFTools is a collection of tools for working with Interactive Fiction (IF) games
 
 ## Contributing
 
-Contributions are welcome! Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/strawberryfield/IFTools).
+Contributions are welcome! Feel free to submit issues or pull requests on this [GitHub repository](https://github.com/strawberryfield/IFTools).
 
 ## License
 
