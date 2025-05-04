@@ -1,5 +1,5 @@
-# Online documentation for Casasoft IFTools
+## Online documentation for Casasoft IFTools
 
-## Content
+### Content
 
 - [GBlorbLib package](./GblorbLib-index)
