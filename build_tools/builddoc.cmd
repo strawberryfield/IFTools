@@ -28,12 +28,32 @@ set bin=%repo%bin\
 set build=%bin%build
 
 set pkgname=Casasoft_IFTools
+
+@echo off
 set dotnet=%USERPROFILE%\.dotnet\tools\
 
 pushd .
 cd %build%
-"%dotnet%xmldoc2md" %build%\Casasoft.IF.GblorbLib.dll -o "%repo%docs" --github-pages --index-page-name GblorbLib-index
-popd
+@echo on
+"%dotnet%xmldoc2md" %build%\Casasoft.IF.GblorbLib.dll -o "%repo%docs" --github-pages --index-page-name GblorbLib-index >nul
 
-rem only for debug 
+set name=GBlorbExtractor
+@echo off
+call :prg_help
+@echo on
+set name=GBlorbEd
+@echo off
+call :prg_help
+
+popd
+goto :end
+
+:prg_help
+set file="%repo%docs\%name%.md"
+echo # Command line usage for %name% >%file%
+echo ``` >>%file%
+%name% -h >>%file%
+echo ``` >>%file%
+exit /b
+
 :end

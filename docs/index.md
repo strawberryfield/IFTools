@@ -3,3 +3,9 @@
 ### Content
 
 - [GBlorbLib package](./GblorbLib-index)
+
+#### Executables
+
+- [GBlorbExtractor](./GBlorbExtractor)
+- [GBlorbEd](./GBlorbEd)
+
