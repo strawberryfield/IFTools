@@ -40,7 +40,7 @@ OptionSet p = new()
 
 List<string> FilesList = p.Parse(args);
 
-if (ShouldShowHelp || FilesList.Count == 0 || string.IsNullOrWhiteSpace(OutputName))
+if (ShouldShowHelp || string.IsNullOrWhiteSpace(OutputName))
 {
     ShowBanner();
     ShowHelp();
@@ -50,7 +50,11 @@ if (ShouldShowHelp || FilesList.Count == 0 || string.IsNullOrWhiteSpace(OutputNa
 if (!ShouldSuppressBanner)
     ShowBanner();
 
-GBlorb Blorb = new(FilesList[0]);
+GBlorb Blorb = new();
+if (FilesList.Count > 0)
+{
+    Blorb = new(FilesList[0]);
+}
 
 if (!string.IsNullOrWhiteSpace(sFrontispice) && Int32.TryParse(sFrontispice, out Frontispice))
 {
@@ -76,14 +80,20 @@ Blorb.Write(OutputName);
 #endregion
 
 #region Procedures
+/// <summary>
+/// Shows the help message.
+/// </summary>
 void ShowHelp()
 {
-    Console.WriteLine("Usage: GBlorbEd [OPTIONS] FILE -o OUTFILE");
+    Console.WriteLine("Usage: GBlorbEd [OPTIONS] [FILE] -o OUTFILE");
     Console.WriteLine("Edits components of a GBlorb file.");
     Console.WriteLine();
     Console.WriteLine("Options:");
     p.WriteOptionDescriptions(Console.Out);
 }
 
+/// <summary>
+/// Shows the banner message.
+/// </summary>
 void ShowBanner() => Console.WriteLine("Casasoft GBlorb command line editor v1.0\n(c) 2025 Roberto Ceccarelli - Casasoft\n");
 #endregion
