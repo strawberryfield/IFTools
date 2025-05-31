@@ -21,6 +21,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.jpg</PackageIcon>
     <PackageTags>interactive-fiction gblorb </PackageTags>
+    <PackageProjectUrl>http://strawberryfield.altervista.org/interactive-fiction/gblorb-manager.php?lang=en</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

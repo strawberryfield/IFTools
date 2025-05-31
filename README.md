@@ -1,6 +1,7 @@
 # IFTools
 
-IFTools is a collection of tools for working with Interactive Fiction (IF) games, particularly those created with Inform 7. The tools are designed to help with various tasks such as extracting text from game files and analyzing game data.
+IFTools is a collection of tools for working with Interactive Fiction (IF) games, particularly those created with Inform 7.  
+The tools are designed to help with various tasks such as extracting text from game files and analyzing game data.
 
 ## Features
 
@@ -11,7 +12,7 @@ IFTools is a collection of tools for working with Interactive Fiction (IF) games
 
 ## Projects
 
-- **GBlorbLib**: A .NET library for working with GBlorb files. Available as a NuGet package.
+- **GBlorbLib**: A .NET library for working with GBlorb files. Available as a [NuGet package](https://www.nuget.org/packages/Casasoft.IF.GBlorbLib).
 - **GBlorbExtract**: A command-line tool for extracting text and resources from GBlorb files.
 - **GBlorbEd**: A command-line tool for editing GBlorb files, including adding or updating optional text chunks.
 

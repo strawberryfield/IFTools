@@ -1,7 +1,7 @@
 ﻿# GBlorbLib
 
 **GBlorbLib** is a .NET library for working with the GBlorb file format, 
-which is used to package resources for interactive fiction (IF) games. 
+which is used to package resources for interactive fiction (IF) games.  
 It provides functionality to read, manipulate, and write GBlorb files,
 including handling headers, resource indices, and chunks.
 
@@ -15,7 +15,7 @@ including handling headers, resource indices, and chunks.
 ## Installation
 
 To use **GBlorbLib** in your project, add a reference to the library. 
-If using Visual Studio, you can include the NuGet package.
+If using Visual Studio, you can include the [NuGet package](https://www.nuget.org/packages/Casasoft.IF.GBlorbLib).
 
 ## Usage
 
@@ -68,11 +68,12 @@ Contributions are welcome! Feel free to submit issues or pull requests on the [G
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](https://www.gnu.org/licenses/agpl-3.0.html) file for details.
+This project is licensed under the GNU Affero General Public License v3.0.  
+See the [LICENSE](https://www.gnu.org/licenses/agpl-3.0.html) file for details.
 
 ## Acknowledgments
 
-- Developed by Roberto Ceccarelli - Casasoft.
+- Developed by [Roberto Ceccarelli](https://strawberryfield.altervista.org/robertoceccarelli-fotografia-informatica.php) - Casasoft.
 - Based on the [Blorb Specification](https://github.com/iftechfoundation/ifarchive-if-specs/blob/main/Blorb-Spec.md).
 
 
