@@ -19,9 +19,15 @@
     <AssemblyName>Casasoft.IF.$(MSBuildProjectName)</AssemblyName>
     <RepositoryUrl>https://github.com/strawberryfield/IFTools</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.jpg</PackageIcon>
+    <PackageTags>interactive-fiction gblorb </PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
