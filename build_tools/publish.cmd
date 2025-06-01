@@ -31,7 +31,7 @@ set pkgname=Casasoft_IFTools
 set nuget=%USERPROFILE%\.nuget\packages\
 set winrar="%ProgramFiles%\WinRAR\winrar.exe"
 
-set version=25.05.04
+set version=25.06.01
  
 @del /S /Q %bin%
 
@@ -50,8 +50,7 @@ pushd .
 cd %build%
 copy %repo%LICENSE.txt .
 copy %repo%README.md .
-%winrar% a -r -m5 -s ..\%pkgname%_%version%.rar *.*
-%winrar% k ..\%pkgname%_%version%.rar 
+%winrar% a -r -m5 -afzip -z%repo%README.md ..\%pkgname%_%version%.zip *.*
 popd
 
 rem only for debug 

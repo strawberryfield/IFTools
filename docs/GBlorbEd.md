@@ -3,7 +3,7 @@
 Casasoft GBlorb command line editor v1.0
 (c) 2025 Roberto Ceccarelli - Casasoft
 
-Usage: GBlorbEd [OPTIONS] FILE -o OUTFILE
+Usage: GBlorbEd [OPTIONS] [FILE] -o OUTFILE
 Edits components of a GBlorb file.
 
 Options:
