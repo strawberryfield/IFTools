@@ -13,6 +13,14 @@
 // Casasoft IF Tools is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY
 
+
+// <summary>
+// GBlorbEd is a command-line editor for GBlorb files, which are used to package resources for interactive fiction (IF) games.
+// This tool allows users to modify metadata such as author, copyright, annotations, and frontispiece image references
+// within a GBlorb file.
+// It supports reading an existing GBlorb file, updating its components, and writing the changes to a new output file.
+// </summary>
+
 using Mono.Options;
 using Casasoft.IF.GBlorbLib;
 

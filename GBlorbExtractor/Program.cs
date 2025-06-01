@@ -13,6 +13,13 @@
 // Casasoft IF Tools is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY
 
+// <summary
+// GBlorbExtractor is a command-line utility for extracting and listing resources from GBlorb files,
+// which are archives used in interactive fiction (IF) games.
+// The tool allows users to view the contents of a GBlorb file or extract all embedded resources
+// (such as images, sounds, and metadata) to a specified directory.
+// </summary>   
+
 using Mono.Options;
 using Casasoft.IF.GBlorbLib;
 
