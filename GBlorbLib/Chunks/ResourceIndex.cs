@@ -81,7 +81,7 @@ public class ResourceIndex : Chunk
             };
             ResourcesEntries.Add(entry);
 
-            progressiveAddress += (chunk.Length + 8);
+            progressiveAddress += (chunk.PaddedLength() + 8);
         }
     }
     #endregion

@@ -32,6 +32,11 @@ public class Chunk : IChunk
     public Int32 Length { get; set; }
 
     /// <summary>
+    /// Gets or sets the filler length of the chunk.
+    /// </summary>
+    public Int32 FillerLength { get; set; }
+
+    /// <summary>
     /// Gets or sets the address of the chunk.
     /// </summary>
     public Int32 Address { get; set; }
@@ -59,6 +64,7 @@ public class Chunk : IChunk
         Name = name;
         Length = 0;
         Address = 0;
+        FillerLength = 0;
     }
 
     /// <summary>
@@ -107,6 +113,12 @@ public class Chunk : IChunk
     }
 
     /// <summary>
+    /// Gets the padded length of the chunk.
+    /// </summary>
+    /// <returns>The padded length, which is the chunk length plus one if the length is odd; otherwise, the chunk length.</returns>
+    public Int32 PaddedLength() => Length + (Helpers.IsOdd(Length) ? 1 : 0);
+
+    /// <summary>
     /// Exports the chunk data to the specified file.
     /// </summary>
     /// <param name="filename">The name of the file to export the chunk data to.</param>
@@ -145,7 +157,7 @@ public class Chunk : IChunk
         {
             if (data[i] != 0)
                 break;
-            Length++;
+            FillerLength++;
         }
     }
     #endregion

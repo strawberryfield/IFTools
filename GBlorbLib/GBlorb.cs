@@ -73,7 +73,7 @@ public class GBlorb
             IChunk chunk = ChunkFactory.CreateChunk(Data, offset);
             chunk.ResourceID = ResourceIndex.GetResourceNumberByAddress(offset);
             Chunks.Add(chunk);
-            offset += 8 + chunk.Length;
+            offset += 8 + chunk.Length + chunk.FillerLength;
         }
     }
     #endregion
@@ -150,7 +150,7 @@ public class GBlorb
         foreach (IChunk chunk in chunks)
         {
             chunk.Write(data, offset);
-            offset += 8 + chunk.Length;
+            offset += 8 + chunk.PaddedLength();
         }
         return offset;
     }

@@ -32,6 +32,11 @@ public interface IChunk
     Int32 Length { get; set; }
 
     /// <summary>
+    /// Gets or sets the filler length of the chunk.
+    /// </summary>
+    Int32 FillerLength { get; set; }
+
+    /// <summary>
     /// Gets or sets the address of the chunk.
     /// </summary>
     Int32 Address { get; set; }
@@ -58,9 +63,15 @@ public interface IChunk
     void FillZero(byte[] data, int offset);
 
     /// <summary>
-    /// Exports the chunk to a file.
+    /// Gets the padded length of the chunk.
     /// </summary>
-    /// <param name="filename">The name of the file to export to.</param>
+    /// <returns>The padded length, which is the chunk length plus one if the length is odd; otherwise, the chunk length.</returns>
+    public Int32 PaddedLength();
+    
+    /// <summary>
+                                   /// Exports the chunk to a file.
+                                   /// </summary>
+                                   /// <param name="filename">The name of the file to export to.</param>
     void Export(string filename);
 
     /// <summary>
