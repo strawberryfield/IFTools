@@ -44,6 +44,10 @@ call :prg_help
 set name=GBlorbEd
 @echo off
 call :prg_help
+@echo on
+set name=ResMap
+@echo off
+call :prg_help
 
 popd
 goto :end

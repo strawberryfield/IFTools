@@ -15,6 +15,7 @@ The tools are designed to help with various tasks such as extracting text from g
 - **GBlorbLib**: A .NET library for working with GBlorb files. Available as a [NuGet package](https://www.nuget.org/packages/Casasoft.IF.GBlorbLib).
 - **GBlorbExtract**: A command-line tool for extracting text and resources from GBlorb files.
 - **GBlorbEd**: A command-line tool for editing GBlorb files, including adding or updating optional text chunks.
+- **ResMap**: A command-line tool for creating resource maps required by the Quixe interpreter.
 
 ## Documentation
 
@@ -24,6 +25,7 @@ The tools are designed to help with various tasks such as extracting text from g
 
 - **.NET 8**
 - **Mono.Options**: Used for command-line option parsing in related tools.
+- **IronSoftware.System.Drawing**: Used for image processing.
 
 ## Contributing
 

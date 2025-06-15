@@ -31,7 +31,7 @@ set pkgname=Casasoft_IFTools
 set nuget=%USERPROFILE%\.nuget\packages\
 set winrar="%ProgramFiles%\WinRAR\winrar.exe"
 
-set version=25.06.01
+set version=25.06.15
  
 @del /S /Q %bin%
 
@@ -43,6 +43,9 @@ set prj=GBlorbExtractor
 @dotnet publish -c Release -o %build% -p:version="%version%" --no-self-contained %repo%%prj%\%prj%.csproj
 
 set prj=GBlorbEd
+@dotnet publish -c Release -o %build% -p:version="%version%" --no-self-contained %repo%%prj%\%prj%.csproj
+
+set prj=ResMap
 @dotnet publish -c Release -o %build% -p:version="%version%" --no-self-contained %repo%%prj%\%prj%.csproj
 
 @echo off
