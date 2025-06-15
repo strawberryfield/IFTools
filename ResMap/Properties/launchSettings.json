@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ResMap": {
+      "commandName": "Project",
+      "commandLineArgs": "-p \"C:\\Users\\rober\\Documents\\Inform\\Projects\\TaufererBahn\\TaufererBahn\""
+    }
+  }
+}
