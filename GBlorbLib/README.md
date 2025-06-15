@@ -11,6 +11,7 @@ including handling headers, resource indices, and chunks.
 - Export individual chunks to files.
 - Add or update optional text chunks (e.g., author, copyright, annotations).
 - Write modified GBlorb files back to disk.
+- Generate resource maps required by the Quixe interpreter.
 
 ## Installation
 
@@ -53,6 +54,14 @@ blorb.AddUpdateOptionalTextChunk("ANNO", "Annotations or remarks");
 blorb.Write("path/to/output.gblorb");
 ```
 
+### Generating a Resource Map for Quixe
+```csharp	
+ExtractDir = $"{ProjectName}.materials/Release";
+file = $"{ExtractDir}/{Path.GetFileName(ProjectName)}.gblorb";
+GBlorb blorb = new(file);
+Blorb.ExportResourceMap(ExtractDir);
+```
+
 ## Online documentation
 
 For detailed documentation, including API references, visit the [GBlorbLib documentation site](https://strawberryfield.github.io/IFTools/GblorbLib-index).
@@ -61,7 +70,8 @@ For detailed documentation, including API references, visit the [GBlorbLib docum
 
 - **.NET 8**
 - **Mono.Options**: Used for command-line option parsing in related tools.
-
+- **IronSoftware.System.Drawing**: Used for image processing.
+ 
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/strawberryfield/IFTools).
