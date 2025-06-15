@@ -56,6 +56,18 @@ public int Length { get; set; }
 
 [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
 
+### **FillerLength**
+
+Gets or sets the filler length of the chunk.
+
+```csharp
+public int FillerLength { get; set; }
+```
+
+#### Property Value
+
+[Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+
 ### **Address**
 
 Gets or sets the address of the chunk.

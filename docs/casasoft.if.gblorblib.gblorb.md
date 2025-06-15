@@ -110,6 +110,19 @@ public void Export(string path)
 `path` [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 The path to export the chunks to.
 
+### **ExportResourceMap(String)**
+
+Exports a resource map for the GBlorb file to the specified path.
+
+```csharp
+public void ExportResourceMap(string savePath)
+```
+
+#### Parameters
+
+`savePath` [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
+The path where the resource map will be exported.
+
 ### **Write(String)**
 
 Writes the GBlorb data, including the header, resource index, and chunks, to the specified file.
@@ -193,6 +206,24 @@ The resource number of the chunk.
 
 [IChunk](./casasoft.if.gblorblib.ichunk)<br>
 The chunk matching the specified type and resource number, or null if not found.
+
+### **GetChunkByResourceNumber(Int32)**
+
+Retrieves a chunk by its resource number.
+
+```csharp
+public IChunk GetChunkByResourceNumber(int resourceNumber)
+```
+
+#### Parameters
+
+`resourceNumber` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+The resource number of the chunk.
+
+#### Returns
+
+[IChunk](./casasoft.if.gblorblib.ichunk)<br>
+The chunk matching the specified resource number, or null if not found.
 
 ### **GetChunkByType(String)**
 

@@ -36,6 +36,18 @@ public abstract int Length { get; set; }
 
 [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
 
+### **FillerLength**
+
+Gets or sets the filler length of the chunk.
+
+```csharp
+public abstract int FillerLength { get; set; }
+```
+
+#### Property Value
+
+[Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+
 ### **Address**
 
 Gets or sets the address of the chunk.
@@ -93,6 +105,19 @@ The byte array to fill with zero.
 
 `offset` [Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
 The offset within the byte array where the zero should be written.
+
+### **PaddedLength()**
+
+Gets the padded length of the chunk.
+
+```csharp
+int PaddedLength()
+```
+
+#### Returns
+
+[Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)<br>
+The padded length, which is the chunk length plus one if the length is odd; otherwise, the chunk length.
 
 ### **Export(String)**
 
